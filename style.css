@@ -1,0 +1,252 @@
+:root {
+  --heart-animation-duration: 0.5s;
+  --circle-animation-duration: 0.35s;
+  --c-animation-duration: 0.4s;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  margin-bottom: 4rem;
+}
+
+.like-button {
+  width: 100px;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+svg {
+  overflow: visible;
+}
+
+#heart {
+  transform-origin: center;
+}
+
+#circle {
+  opacity: 0;
+  transform-origin: center;
+}
+
+#c1,
+#c2 {
+  opacity: 0;
+  transition: all var(--smcircle-animation-duration) ease;
+  transition-delay: calc(var(--heart-animation-duration) - 0.25s);
+}
+
+#checkbox:checked + svg #heart {
+  fill: #e2264d;
+  animation-name: heart-checked;
+  animation-duration: var(--heart-animation-duration);
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+#checkbox:not(:checked) + svg #heart {
+  fill: #aab8c2;
+  animation-name: heart-unchecked;
+  animation-duration: var(--heart-animation-duration);
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+}
+
+#checkbox:checked + svg #circle {
+  animation-name: circle;
+  animation-duration: var(--circle-animation-duration);
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+/* All c1 */
+#checkbox:checked + svg #g1 > #c1,
+#checkbox:checked + svg #g2 > #c1,
+#checkbox:checked + svg #g3 > #c1,
+#checkbox:checked + svg #g4 > #c1,
+#checkbox:checked + svg #g5 > #c1,
+#checkbox:checked + svg #g6 > #c1,
+#checkbox:checked + svg #g7 > #c1 {
+  animation-name: sm-circle;
+  animation-duration: var(--c-animation-duration);
+  animation-delay: calc(var(--heart-animation-duration) - 0.25s);
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  transition-property: all;
+  transition-duration: var(--c-animation-duration);
+  transition-timing-function: ease;
+}
+
+/* All c2 */
+#checkbox:checked + svg #g1 > #c2,
+#checkbox:checked + svg #g2 > #c2,
+#checkbox:checked + svg #g3 > #c2,
+#checkbox:checked + svg #g4 > #c2,
+#checkbox:checked + svg #g5 > #c2,
+#checkbox:checked + svg #g6 > #c2,
+#checkbox:checked + svg #g7 > #c2 {
+  animation-name: sm-circle;
+  animation-duration: var(--c-animation-duration);
+  animation-delay: calc(var(--heart-animation-duration) - 0.25s);
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  transition-property: all;
+  transition-duration: var(--c-animation-duration);
+  transition-timing-function: ease;
+}
+
+/* Individual g1 */
+#checkbox:checked + svg #g1 > #c1 {
+  transform: translate(-20%, -20%) scale(0.6);
+}
+#checkbox:checked + svg #g1 > #c2 {
+  transform: translate(0, -20%) scale(1.4);
+}
+
+/* Individual g2 */
+#checkbox:checked + svg #g2 > #c1 {
+  transform: translate(20%, -20%) scale(0.6);
+}
+#checkbox:checked + svg #g2 > #c2 {
+  transform: translate(20%, -10%) scale(1.4);
+}
+
+/* Individual g3 */
+#checkbox:checked + svg #g3 > #c1 {
+  transform: translate(20%, -10%) scale(0.6);
+}
+#checkbox:checked + svg #g3 > #c2 {
+  transform: translate(20%, 0) scale(1.4);
+}
+
+/* Individual g4 */
+#checkbox:checked + svg #g4 > #c1 {
+  transform: translate(0, 20%) scale(0.6);
+}
+#checkbox:checked + svg #g4 > #c2 {
+  transform: translate(10%, 20%) scale(1.4);
+}
+
+/* Individual g5 */
+#checkbox:checked + svg #g5 > #c1 {
+  transform: translate(-10%, 20%) scale(0.6);
+}
+#checkbox:checked + svg #g5 > #c2 {
+  transform: translate(0, 20%) scale(1.4);
+}
+
+/* Individual g6 */
+#checkbox:checked + svg #g6 > #c1 {
+  transform: translate(-20%, 10%) scale(0.6);
+}
+#checkbox:checked + svg #g6 > #c2 {
+  transform: translate(-10%, 20%) scale(1.4);
+}
+
+/* Individual g7 */
+#checkbox:checked + svg #g7 > #c1 {
+  transform: translate(-20%, -10%) scale(0.6);
+}
+#checkbox:checked + svg #g7 > #c2 {
+  transform: translate(-20%, 0) scale(1.4);
+}
+
+@keyframes heart-checked {
+  0% {
+    transform: scale(0.2);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes heart-unchecked {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes circle {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+    transform: scale(4);
+    fill: #d469b9;
+  }
+  40% {
+    opacity: 1;
+    transform: scale(4.5);
+    fill: #cc8ef5;
+    stroke: #cc8ef5;
+  }
+  50% {
+    opacity: 0;
+    transform: scale(5);
+    fill: transparent;
+    stroke: #cc8ef5;
+  }
+  60% {
+    opacity: 0;
+    transform: scale(5.5);
+    fill: transparent;
+    stroke: #cc8ef5;
+  }
+  70% {
+    opacity: 0;
+    transform: scale(6);
+    fill: transparent;
+    stroke: #cc8ef5;
+  }
+  80% {
+    opacity: 0;
+    transform: scale(6.5);
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 4px;
+  }
+  85% {
+    opacity: 0;
+    transform: scale(6.5);
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 2px;
+  }
+  90% {
+    opacity: 0;
+    transform: scale(6.5);
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(6.5);
+    fill: transparent;
+    stroke: #cc8ef5;
+    stroke-width: 0;
+  }
+}
+
+@keyframes sm-circle {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
